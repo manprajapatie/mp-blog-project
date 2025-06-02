@@ -1,11 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
-import blogReducer from './blogSlice'
-import authslice from './authslice';
+import blogSlice from './blogSlice'
+import authSlice from './authSlice'
 
 export default configureStore({
     reducer: {
-        blog: blogReducer,
-        auth: authslice,
+        blog: blogSlice,
+        auth: authSlice,
     },
 });
 
