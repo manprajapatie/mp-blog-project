@@ -19,7 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="BlogDetails" element={<BlogDetails />} />
+        {/* :id is comming from useParam() Hook*/}
+        <Route path="BlogDetails/:id" element={<BlogDetails />} />
         <Route path="AdminDashboard" element={<AdminDashboard />} />
       </Routes>
     </>
