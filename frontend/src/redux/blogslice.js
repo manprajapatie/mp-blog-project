@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const blogslice = createSlice({
+const blogSlice = createSlice({
     name: 'blog',
     initialState: {
         blogs: [],
@@ -12,5 +12,5 @@ const blogslice = createSlice({
     },
 })
 
-export const {setBlogs} = blogslice.actions;
-export default blogslice.reducer;
+export const {setBlogs} = blogSlice.actions;
+export default blogSlice.reducer;
