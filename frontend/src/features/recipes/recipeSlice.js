@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
-const initialStage = {
+const initialState = {
     all: [],
     favorites: [],
 };
 
 const recipeSlice = createSlice({
     name: 'receipes',
-    initialStage,
+    initialState,
     reducers: {
         setReceipes: (state, action) => {
             state.all = action.payload;
@@ -24,5 +23,5 @@ const recipeSlice = createSlice({
     },
 });
 
-export const {setReceipes, addToFavorites, removeFromFavorites} = recipeSlice.actions;
+export const { setRecipes, addToFavorites, removeFromFavorites } = recipeSlice.actions;
 export default recipeSlice.reducer;
