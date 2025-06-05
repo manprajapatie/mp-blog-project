@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Login from "./pages/Login"
-import BlogDetails from "./pages/BlogDetails"
-import AdminDashboard from "./pages/AdminDashboard"
+import Header from '../src/components/Header'
+import Footer from '../src/components/Footer'
+import AppRoutes from '../src/routes/AppRoutes'
 import './App.css'
 
 
@@ -12,17 +10,13 @@ function App() {
 
   return (
     <>
-      <h1 className='bg-sky-500/90'>
-        Tailwind Working Fine
-      </h1>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        {/* :id is comming from useParam() Hook*/}
-        <Route path="BlogDetails/:id" element={<BlogDetails />} />
-        <Route path="AdminDashboard" element={<AdminDashboard />} />
-      </Routes>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <AppRoutes/>
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
