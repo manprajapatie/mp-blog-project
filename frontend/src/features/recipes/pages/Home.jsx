@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addToFavorites, removeFromFavorites } from '../recipeSlice'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -42,7 +43,9 @@ const Home = () => {
                   </span>
                 ))}
               </div>
-              <button
+
+
+              {/* <button
                 onClick={() => toggleFavorite(recipe.id)}
                 className={`mt-4 w-full py-2 px-4 rounded-lg font-bold text-lg transition duration-300 ease-in-out
                   ${favorites.includes(recipe.id)
@@ -51,13 +54,38 @@ const Home = () => {
                   }`}
               >
                 {favorites.includes(recipe.id) ? "Remove Favorite" : "Add to Favorite"}
+              </button> */}
+
+              <button
+                onClick={() => toggleFavorite(recipe.id)}
+                className={`mt-4 w-2sm py-2 px-4 rounded-full font-bold text-lg transition duration-300 ease-in-out
+                  ${favorites.includes(recipe.id)
+                    ? "bg-red-600 text-white hover:bg-red-700 shadow-md"
+                    : "bg-green-500 text-white hover:bg-green-600 shadow-md"
+                  }`}
+              >
+                {favorites.includes(recipe.id)
+                    ? "Rem"
+                    : "Fav"
+                  }
               </button>
+
+
+              {/* //Navigate to detail of recipe */}
+              <Link
+                to={`/RecipeDetails/${recipe.id}`}
+                className="block text-center mt-4 w-full py-2 px-4 rounded-lg font-bold text-lg transition duration-300 ease-in-out bg-green-500 text-white hover:bg-green-600 shadow-md"
+              >
+                View Recipe
+              </Link>
+
+
             </div>
           ))}
         </div>
       </main>
 
-      
+
     </>
   )
 }
