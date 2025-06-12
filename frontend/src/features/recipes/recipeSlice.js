@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { recipes as staticData } from "../../constants/recipes";
 
 const initialState = {
-    all: [],
+    all: staticData,
     favorites: [],
 };
 
 const recipeSlice = createSlice({
-    name: 'receipes',
+    name: 'recipes',
     initialState,
     reducers: {
-        setReceipes: (state, action) => {
+        setRecipes: (state, action) => {
             state.all = action.payload;
         },
         addToFavorites: (state, action) => {
