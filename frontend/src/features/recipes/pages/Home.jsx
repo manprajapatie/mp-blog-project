@@ -1,7 +1,8 @@
-import React from 'react'
+import React  from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { addToFavorites, removeFromFavorites } from '../recipeSlice'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from "react"
 
 const Home = () => {
 
