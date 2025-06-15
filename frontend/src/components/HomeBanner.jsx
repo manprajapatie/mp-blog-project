@@ -43,7 +43,7 @@ export const Banner = ({ recipes }) => {
             <img
                 src={recipe.image}
                 alt={recipe.name}
-                className="w-full h-72 object-cover transition-all duration-700"
+                className="w-full h-96 object-cover transition-all duration-700"
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
                 <h2 className="text-3xl font-bold text-white">{recipe.name}</h2>
