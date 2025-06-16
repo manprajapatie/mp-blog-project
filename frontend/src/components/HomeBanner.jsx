@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 
 //recipes recieve from prop
 export const Banner = ({ recipes }) => {
+
+    //this is used for check, in which index we are (0 - to - 4)
     const [current, setCurrent] = useState(0);
 
 
