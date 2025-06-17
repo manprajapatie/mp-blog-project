@@ -36,7 +36,7 @@ export const recipes = [
 
     {
         id: 2,
-        name: "Classic Margherita Pizza",
+        name: "Classic Margherita burger",
         ingredients: [
             "Pizza dough",
             "Tomato sauce",
@@ -69,7 +69,7 @@ export const recipes = [
 
     {
         id: 3,
-        name: "Classic Margherita Pizza",
+        name: "Classic Margherita chowmain",
         ingredients: [
             "Pizza dough",
             "Tomato sauce",
@@ -102,7 +102,7 @@ export const recipes = [
 
     {
         id: 4,
-        name: "Classic Margherita Pizza",
+        name: "Classic Margherita pasta",
         ingredients: [
             "Pizza dough",
             "Tomato sauce",

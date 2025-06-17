@@ -4,6 +4,7 @@ import { addToFavorites, removeFromFavorites } from '../recipeSlice'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import { useDebounce } from '../../../utils/useDebounce'
+import { Banner } from '../../../components/HomeBanner'
 
 const Home = () => {
 
@@ -37,7 +38,7 @@ const Home = () => {
   return (
     <>
       <main className="max-w-6xl mx-auto px-4 py-8">
-
+       <Banner recipes={allRecipes} />
         <input
           type="text"
           placeholder="Search by name, tags or meal type..."
@@ -110,6 +111,8 @@ const Home = () => {
 
               </div>
             ))) : (
+
+
             <p className="text-center col-span-full">No recipes found.</p>
           )
           }
