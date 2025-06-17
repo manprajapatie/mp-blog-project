@@ -6,6 +6,8 @@ import { useEffect, useState } from "react"
 import { useDebounce } from '../../../utils/useDebounce'
 import { Banner } from '../../../components/HomeBanner'
 
+
+
 const Home = () => {
 
   const allRecipes = useSelector((state) => state.recipes.all)
@@ -15,6 +17,12 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const useDebounceData = useDebounce(searchTerm, 300)
   const [filteredRecipes, setFilteredRecipes] = useState(allRecipes)
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const recipesPerPage = 6;
+
+  const recipesToShow = useDebounce ? filteredRecipes : allRecipes
 
 
   const toggleFavorite = (id) => {
@@ -32,8 +40,15 @@ const Home = () => {
       recipe.mealType?.some((type) => type.toLowerCase().includes(lowerSearch))
     );
     setFilteredRecipes(filtered);
-  }, [useDebounceData, allRecipes]);
+    setCurrentPage(1)
+  }, [useDebounceData, allRecipes]
+  );
 
+  // Pagination logic
+  const indexOfLast = currentPage * recipesPerPage; //total number of card (all)
+  const indexOfFirst = indexOfLast - recipesPerPage; 
+  const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(recipesToShow.length / recipesPerPage);
 
   return (
     <>
@@ -58,7 +73,7 @@ const Home = () => {
         {/* recipe Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRecipes.length > 0 ? (
-            filteredRecipes.map((recipe) => (
+            currentRecipes.map((recipe) => (
               <div key={recipe.id} className="border border-gray-200 rounded-xl p-5 shadow-lg bg-white transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <img
                   src={recipe.image}
@@ -124,6 +139,20 @@ const Home = () => {
           )
           }
         </div>
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-10 space-x-2">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                className={`px-4 py-2 rounded ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </main>
 
 
