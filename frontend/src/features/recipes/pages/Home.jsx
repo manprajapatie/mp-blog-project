@@ -38,7 +38,8 @@ const Home = () => {
   return (
     <>
       <main className="max-w-6xl mx-auto px-4 py-8">
-       <Banner recipes={allRecipes} />
+
+        {/* Search input for Home page */}
         <input
           type="text"
           placeholder="Search by name, tags or meal type..."
@@ -47,8 +48,14 @@ const Home = () => {
           className="mb-6 px-4 py-2 w-full border rounded-md shadow-sm"
         />
 
+        {/* Banner Section imported */}
+        {searchTerm.trim() === '' && <Banner recipes={allRecipes} />}
+
+
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">All Recipes</h2>
 
+
+        {/* recipe Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
