@@ -6,8 +6,6 @@ import { useEffect, useState } from "react"
 import { useDebounce } from '../../../utils/useDebounce'
 import { Banner } from '../../../components/HomeBanner'
 
-
-
 const Home = () => {
 
   const allRecipes = useSelector((state) => state.recipes.all)
@@ -47,7 +45,7 @@ const Home = () => {
   // Pagination logic
   const indexOfLast = currentPage * recipesPerPage; //total number of card (all)
   const indexOfFirst = indexOfLast - recipesPerPage; 
-  const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);
+  const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);  //provide current page items
   const totalPages = Math.ceil(recipesToShow.length / recipesPerPage);
 
   return (
@@ -66,9 +64,7 @@ const Home = () => {
         {/* Banner Section imported */}
         {searchTerm.trim() === '' && <Banner recipes={allRecipes} />}
 
-
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">All Recipes</h2>
-
 
         {/* recipe Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -129,15 +125,12 @@ const Home = () => {
                 >
                   View Recipe
                 </Link>
-
-
               </div>
             ))) : (
-
-
             <p className="text-center col-span-full">No recipes found.</p>
           )
           }
+
         </div>
         {/* Pagination */}
         {totalPages > 1 && (
@@ -145,7 +138,12 @@ const Home = () => {
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index + 1}
-                className={`px-4 py-2 rounded ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+                className={
+                  `px-4 py-2 rounded
+                   ${currentPage === index + 1 ?
+                    'bg-green-500 text-white'
+                    : 'bg-gray-200'}
+                  `}
                 onClick={() => setCurrentPage(index + 1)}
               >
                 {index + 1}
