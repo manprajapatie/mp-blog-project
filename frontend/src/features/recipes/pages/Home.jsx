@@ -44,9 +44,9 @@ const Home = () => {
 
   // Pagination logic
   const indexOfLast = currentPage * recipesPerPage; //total number of card (all)
-  const indexOfFirst = indexOfLast - recipesPerPage; 
-  const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);  //provide current page items
-  const totalPages = Math.ceil(recipesToShow.length / recipesPerPage);
+  const indexOfFirst = indexOfLast - recipesPerPage;
+  const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);  //provide current page items index
+  const totalPages = Math.ceil(recipesToShow.length / recipesPerPage); //how many pages are there
 
   return (
     <>
@@ -60,6 +60,7 @@ const Home = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="mb-6 px-4 py-2 w-full border rounded-md shadow-sm"
         />
+
 
         {/* Banner Section imported */}
         {searchTerm.trim() === '' && <Banner recipes={allRecipes} />}
