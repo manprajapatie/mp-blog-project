@@ -133,7 +133,7 @@ const Home = () => {
           }
 
         </div>
-        {/* Pagination */}
+        {/* Pagination
         {totalPages > 1 && (
           <div className="flex justify-center mt-10 space-x-2">
             {Array.from({ length: totalPages }, (_, index) => (
@@ -151,7 +151,7 @@ const Home = () => {
               </button>
             ))}
           </div>
-        )}
+        )} */}
       </main>
 
 
