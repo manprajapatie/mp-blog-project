@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import { useDebounce } from '../../../utils/useDebounce'
 import { Banner } from '../../../components/HomeBanner'
+import Pagination from '../../../components/Pagination'
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
   const [filteredRecipes, setFilteredRecipes] = useState(allRecipes)
 
   // Pagination
+  //CurrentPage
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 6;
 
@@ -46,6 +48,8 @@ const Home = () => {
   const indexOfLast = currentPage * recipesPerPage; //total number of card (all)
   const indexOfFirst = indexOfLast - recipesPerPage;
   const currentRecipes = recipesToShow.slice(indexOfFirst, indexOfLast);  //provide current page items index
+
+  //total Page
   const totalPages = Math.ceil(recipesToShow.length / recipesPerPage); //how many pages are there
 
   return (
@@ -133,25 +137,12 @@ const Home = () => {
           }
 
         </div>
-        {/* Pagination
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-10 space-x-2">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index + 1}
-                className={
-                  `px-4 py-2 rounded
-                   ${currentPage === index + 1 ?
-                    'bg-green-500 text-white'
-                    : 'bg-gray-200'}
-                  `}
-                onClick={() => setCurrentPage(index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
-        )} */}
+        {/* Pagination Component */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </main>
 
 

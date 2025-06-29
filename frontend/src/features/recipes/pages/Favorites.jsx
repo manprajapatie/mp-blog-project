@@ -38,7 +38,7 @@ const Favorites = () => {
                                     Remove
                                 </button>
                                 <Link
-                                    to={`/recipe/${recipe.id}`}
+                                    to={`/RecipeDetails/${recipe.id}`}
                                     className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
                                 >
                                     View
