@@ -39,7 +39,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
                 onClick={()=> setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
                 >
-                    {next}
+                    next
                 </button>
 
             </div >
