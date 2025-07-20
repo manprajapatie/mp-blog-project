@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import users from '../userData'
+import React, { useEffect, useState } from 'react'
+import { users } from '../userData'
 import { useDispatch, useSelector } from "react-redux"
 import { login, setError } from '../authSlice'
 import { useNavigate } from "react-router-dom"
@@ -8,24 +8,37 @@ const Login = () => {
 
     const [form, setForm] = useState({ username: "", password: "" })
     const error = useSelector((state) => state.auth.error) //get error msg from auth reducer
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+
+    //If Authentication is confirm then move to home page
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/')
+        }
+    }, [isAuthenticated, navigate])
+
+
+    //Take the username and password
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
+    //Authentication verifing (check if user and password are correct)
     const handleSubmit = (e) => {
         e.preventDefault()
-        const foundUser = users.find((user)=>{
-            user.username === form.username && user.password === form.password
+        const foundUser = users.find((user) => {
+            return user.username === form.username && user.password === form.password
+
         })
 
-        if(foundUser){
+        if (foundUser) {
             dispatch(login(foundUser))
             navigate("/") //if user and pass true then navigate to home
         }
-        else{
+        else {
             dispatch(setError("Incorrect username or password"))
         }
     }
@@ -51,11 +64,14 @@ const Login = () => {
                         </label>
 
                         <input
-                            name="usename"
-                            id='usename'
+                            name="username"
+                            id='username'
+                            placeholder='emilys'
                             value={form.username}
                             onChange={handleChange}
                             type="text"
+                            className='w-full h-10 border-2 border-amber-600 border-w focus:outline-none focus:border-amber-800 rounded-xl  text-m p-2'
+                            required
                         />
 
                     </div>
@@ -73,10 +89,13 @@ const Login = () => {
                         <input
                             name="password"
                             id='password'
+                            placeholder='emilyspass'
                             value={form.password}
                             onChange={handleChange}
-                            type="text"
-                        />
+                            type="password"
+                            className='w-full h-10 border-2 border-amber-600 border-w focus:outline-none focus:border-amber-800 rounded-xl  text-m p-2'
+                            required
+                        />{/* required = {true} and false, for dynamic datacontroll */}
                     </div>
 
                     {/* button for submit login */}
