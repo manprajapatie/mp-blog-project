@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { logout } from '../features/auth/authSlice'
 import { useDispatch } from 'react-redux'
+import man from '../assets/man.png'
 
 const Header = () => {
 
@@ -17,8 +18,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-green-500 text-white p-4 shadow-md flex place-content-between">
-        <h1 className="text-2xl font-bold">Recipe Blog</h1>
+      <header className="bg-green-500 text-white p-2 shadow-md flex place-content-between">
+        {/* <h1 className="text-2xl font-bold">Recipe Blog</h1> */}
+        <img src={man} className='h-10 ml-5' alt="Img" />
         
 
           {!isLogOutHide &&
