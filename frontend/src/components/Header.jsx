@@ -19,19 +19,21 @@ const Header = () => {
     <>
       <header className="bg-green-500 text-white p-4 shadow-md flex place-content-between">
         <h1 className="text-2xl font-bold">Recipe Blog</h1>
-        <nav className='flex space-x-10 px-10 text-2xl'>
+        
+
+          {!isLogOutHide &&
+          <nav className='flex space-x-10 px-10 text-2xl'>
           <Link to="/" className='hover:underline '>Home</Link>
           <Link to="/Favorites" className='hover:underline pr-18'>Favorite</Link>
 
-          {!isLogOutHide &&
             <button
               onClick={handleLogOut}
               className=' bg-amber-50 rounded-2xl w-20 text-emerald-700 text-sm hover:text-emerald-950 hover:font-bold transition-all duration-300 cursor-pointer'
             >
               Logout
             </button>
-          }
         </nav>
+          }
       </header>
     </>
   )
