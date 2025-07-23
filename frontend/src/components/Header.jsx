@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-green-500 text-white p-2 shadow-md flex place-content-between">
+      <header className="bg-primary-800 text-white p-2 shadow-md flex place-content-between">
         {/* <h1 className="text-2xl font-bold">Recipe Blog</h1> */}
         <img src={man} className='h-10 ml-5' alt="Img" />
         
@@ -30,7 +30,8 @@ const Header = () => {
 
             <button
               onClick={handleLogOut}
-              className=' bg-amber-50 rounded-2xl w-20 text-emerald-700 text-sm hover:text-emerald-950 hover:font-bold transition-all duration-300 cursor-pointer'
+              className='
+              bg-amber-50 rounded-2xl w-20 text-Secondary-500 text-sm hover:text-Secondary-800 hover:font-bold transition-all duration-300 cursor-pointer'
             >
               Logout
             </button>
