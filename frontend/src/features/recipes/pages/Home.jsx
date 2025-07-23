@@ -81,7 +81,7 @@ const Home = () => {
                   alt={recipe.name}
                   className="w-full h-48 object-cover rounded-lg mb-4 shadow-sm"
                 />
-                <h3 className="text-2xl font-semibold mb-2 text-gray-900">{recipe.name}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{recipe.name}</h3>
                 <p className="text-base text-gray-600 mb-3">
                   <span className="font-medium">Cuisine:</span> {recipe.cuisine} | <span className="font-medium">Difficulty:</span> {recipe.difficulty}
                 </p>
@@ -112,8 +112,8 @@ const Home = () => {
                   onClick={() => toggleFavorite(recipe.id)}
                   className={`mt-4 w-2sm py-2 px-4 rounded-full font-bold text-lg transition duration-300 ease-in-out
                   ${favorites.includes(recipe.id)
-                      ? "bg-red-600 text-white hover:bg-red-700 shadow-md"
-                      : "bg-green-500 text-white hover:bg-green-600 shadow-md"
+                      ? "bg-Secondary-800 text-white hover:bg-Secondary-800 shadow-md"
+                      : "bg-Secondary-100 text-white hover:bg-Secondary-800 shadow-md"
                     }`}
                 >
                   {favorites.includes(recipe.id)
@@ -126,7 +126,7 @@ const Home = () => {
                 {/* //Navigate to detail of recipe */}
                 <Link
                   to={`/RecipeDetails/${recipe.id}`}
-                  className="block text-center mt-4 w-full py-2 px-4 rounded-lg font-bold text-lg transition duration-300 ease-in-out bg-green-500 text-white hover:bg-green-600 shadow-md"
+                  className="block text-center mt-4 w-full py-2 px-4 rounded-lg font-bold text-lg transition duration-300 ease-in-out bg-Secondary-500 text-white hover:bg-Secondary-800 shadow-md"
                 >
                   View Recipe
                 </Link>
