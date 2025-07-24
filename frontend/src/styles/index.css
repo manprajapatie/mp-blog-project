@@ -2,3 +2,113 @@
 @tailwind components;
 @tailwind utilities; */
 @import "tailwindcss";
+
+
+
+@theme {
+    --color-primary-800: #F82348;
+    --color-Secondary-800: #000;
+    --color-Secondary-500: #FFFFFF;
+    /* --color-Secondary-300: rgb(200, 63, 18); */
+    --color-Secondary-100: rgb(255, 174, 0);
+
+}
+
+
+
+@layer components {
+    .ZoomInOut {
+        &:hover {
+            transition: all 2s ease-in-out;
+            animation: Zoom 50s ease-out;
+        }
+    }
+}
+
+/* 👇 This must be outside of the class */
+@keyframes Zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    5% {
+        transform: scale(1.1);
+    }
+
+    10% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.1)
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1)
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.1)
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1)
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    55% {
+        transform: scale(1.1)
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    65% {
+        transform: scale(1.1)
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1)
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    85% {
+        transform: scale(1.1)
+    }
+
+    90% {
+        transform: scale(1);
+    }
+
+    95% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
