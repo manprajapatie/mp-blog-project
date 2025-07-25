@@ -34,24 +34,32 @@ const BannerSlider = () => {
 
         {/* Container For Text and Image */}
 
-        <div className='flex justify-between max-w-full w-full h-[43rem] border-solid border-2 border-Secondary-100 absolute items-center'>
+        <div
+          className='flex justify-between max-w-full w-full h-[43rem] border-solid border-2 border-Secondary-100 absolute items-center'
+          key={index}
+        >
 
           {/* Text Area */}
-          <div className=' border-solid border-2 border-black w-[30%] h-1/2 m-5 p-2 '>
+          <div className=' border-solid border-2 border-black w-[30%] h-1/2 m-5 p-2 relative TransformTopToBottom'>
             <h2 className='font-Rouge text-4xl text-primary-800 pb-3'>Namasty</h2>
-            <h1 className='font-Lora text-4xl bold pb-4'>Fresh Food <span className='text-primary-800'>Low Price</span></h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, reiciendis? In, deleniti!
-          </p>
-          <button></button>
+            <h1 className='font-Lora text-4xl bold pb-4'> {img[index].Title}
+              <span className='text-primary-800'> Low Price</span></h1>
+            <p>
+              {img[index].Detail}
+            </p>
+            <button></button>
           </div>
 
           {/* Image Area */}
 
 
 
-          <div className='border-solid border-2 border-black h-3/4 flex justify-center items-center grow-10'>
-            <img src={img[index].src} alt="" className='h-[70%]  ZoomInOut' />
+          <div className='relative TransformRightToLeft border-solid border-2 border-black h-3/4 flex justify-center items-center grow-10 ' key={index}>
+            <img
+              src={img[index].src}
+
+              alt=""
+              className='h-[70%]  ZoomInOut' />
           </div>
 
         </div>
