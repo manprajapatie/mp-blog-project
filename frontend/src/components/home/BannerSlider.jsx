@@ -45,7 +45,7 @@ const BannerSlider = () => {
             <h2 className='font-Rouge text-4xl text-primary-800 pb-3'>Namasty</h2>
             <h1 className='font-Lora text-4xl bold pb-4'> {img[index].Title}
               <span className='text-primary-800'> Low Price</span></h1>
-            <p className='mb-5'>
+            <p className='mb-5 text-[1.1rem]'>
               {img[index].Detail}
             </p>
             <Link
@@ -65,7 +65,7 @@ const BannerSlider = () => {
               src={img[index].src}
 
               alt=""
-              className='h-[70%]  ZoomInOut' />
+              className='h-[70%]  ZoomInOut ' />
           </div>
 
         </div>
