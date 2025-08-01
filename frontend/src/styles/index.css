@@ -6,6 +6,9 @@
 
 
 @theme {
+    --font-Rouge: "Rouge Script", cursive;
+    --font-Lora: "Lora", serif;
+
     --color-primary-800: #F82348;
     --color-Secondary-800: #000;
     --color-Secondary-500: #FFFFFF;
@@ -15,100 +18,151 @@
 }
 
 
-
+/*------------------ ZoomIn ZoomOut Effect with Hover*/
 @layer components {
     .ZoomInOut {
         &:hover {
             transition: all 2s ease-in-out;
-            animation: Zoom 50s ease-out;
+            animation: ZoomHover 2.5s ease-out infinite;
         }
     }
 }
 
-/* 👇 This must be outside of the class */
+/* This must be outside of the class */
+@keyframes ZoomHover {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/*------------------ ZoomIn ZoomOut Effect without Hover*/
+@layer components {
+    .ZoomInOutWithoutHover {
+
+        transition: all 2s ease-in-out;
+        animation: Zoom 2.5s ease-out infinite;
+
+    }
+}
+
+/* This must be outside of the class */
 @keyframes Zoom {
     0% {
         transform: scale(1);
     }
 
-    5% {
-        transform: scale(1.1);
-    }
-
-    10% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.1)
-    }
-
-    20% {
-        transform: scale(1);
-    }
-
-    25% {
-        transform: scale(1.1)
-    }
-
-    30% {
-        transform: scale(1);
-    }
-
-    35% {
-        transform: scale(1.1)
-    }
-
-    40% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.1)
-    }
-
     50% {
-        transform: scale(1);
-    }
-
-    55% {
-        transform: scale(1.1)
-    }
-
-    60% {
-        transform: scale(1);
-    }
-
-    65% {
-        transform: scale(1.1)
-    }
-
-    70% {
-        transform: scale(1);
-    }
-
-    75% {
-        transform: scale(1.1)
-    }
-
-    80% {
-        transform: scale(1);
-    }
-
-    85% {
-        transform: scale(1.1)
-    }
-
-    90% {
-        transform: scale(1);
-    }
-
-    95% {
-        transform: scale(1.1)
+        transform: scale(1.1);
     }
 
     100% {
         transform: scale(1);
+    }
+
+}
+
+/*------------------ Transition Effect Left to right*/
+
+@layer components {
+    .TransformRightToLeft {
+        animation: Move 5s ease-in-out forwards;
+        transition: all 1s ease-in-out;
+    }
+}
+
+@keyframes Move {
+    0% {
+        transform: translateX(12rem);
+        opacity: 0.1;
+    }
+
+    15% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-13rem);
+        opacity: 0;
+    }
+
+}
+
+
+/*------------------ Transition Effect Top to bottom*/
+@layer components {
+    .TransformTopToDown {
+        animation: MoveDown 1s ease-out forwards;
+        transition: all 1s ease-in-out;
+    }
+}
+
+@keyframes MoveDown {
+    0% {
+        transform: translatey(-2rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+}
+
+/*------------------ Transition Effect Top to bottom and then right from initial stage*/
+
+@layer components {
+    .TransformTopToBottom {
+        animation: TopToBottom 5s ease-in forwards;
+        transition: all 1s ease-in-out;
+    }
+}
+
+@keyframes TopToBottom {
+    0% {
+        transform: translateY(-3rem);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translateY(-3rem);
+        opacity: 0;
+    }
+
+    30% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    95% {
+        transform: translateX(-6rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-6rem);
+        opacity: 0;
     }
 
 }
