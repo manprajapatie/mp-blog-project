@@ -19,11 +19,14 @@ const Favorites = () => {
 
     return (
         <>
+            <div className='relative  max-w-full w-full h-40 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
+            </div>
+
             <div className='max-w-6xl mx-auto px-4 py-8'>
                 <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">My Favorite Recipes</h2>
 
                 {favoriteRecipes.length === 0 ? (
-                    <p className="text-center text-gray-600">You haven't added any favorites yet.</p>
+                    <p className="text-center text-gray-600 mb-60">You haven't added any favorites yet.</p>
                 ) : (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {favoriteRecipes.map((recipe) => (
                         <div key={recipe.id} className="border rounded-lg p-5 shadow bg-white">
