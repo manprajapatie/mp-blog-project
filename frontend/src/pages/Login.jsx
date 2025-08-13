@@ -3,6 +3,8 @@ import { users } from '../features/auth/userData'
 import { useDispatch, useSelector } from "react-redux"
 import { login, setError } from '../features/auth/authSlice'
 import { useNavigate } from "react-router-dom"
+import img from ".././assets/FoodImg/img5.jpeg"
+import logo from ".././assets/logoCol.png"
 
 const Login = () => {
 
@@ -46,66 +48,92 @@ const Login = () => {
 
     return (
         <>
-            <div className='min-h-screen flex justify-center items-center bg-gray-100'>
+            <div className='min-h-screen bg-gray-100 text-gray-900 flex justify-center items-center'>
 
-                <form onSubmit={handleSubmit} className='bg-white p-8 rounded shadow-md w-full max-w-md'>
-                    <h2 className='text-2xl font-bold mb-6 text-center'>Login</h2>
+                <div className='max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center items-center overflow-hidden'>
 
-                    {/*if get any error then error become true and give us the msg */}
-                    {error && <p className='text-red-500 mb-4 text-center'>{error}</p>}
 
-                    {/* For username */}
-                    <div className='mb-4'>
-                        <label
-                            className="block mb-1 font-medium"
-                            htmlFor='username' //it is used to link with input for better cordination, link with id of input
-                        >
-                            Username
-                        </label>
-
-                        <input
-                            name="username"
-                            id='username'
-                            placeholder='emilys'
-                            value={form.username}
-                            onChange={handleChange}
-                            type="text"
-                            className='w-full h-10 border-2 border-amber-600 border-w focus:outline-none focus:border-amber-800 rounded-xl  text-m p-2'
-                            required
+                    {/* Side Background */}
+                    <div className="w-full h-screen overflow-hidden">
+                        <img
+                            src={img}
+                            alt=""
+                            className="w-full h-full object-cover"
                         />
-
                     </div>
 
 
-                    {/* For password     */}
-                    <div className='mb-6'>
-                        <label
-                            className="block mb-1 font-medium"
-                            htmlFor='password' //it is used to link with input for better cordination, link with id of input
-                        >
-                            Password
-                        </label>
+                    <form onSubmit={handleSubmit} className='bg-white p-8 w-full max-w-md '>
 
-                        <input
-                            name="password"
-                            id='password'
-                            placeholder='emilyspass'
-                            value={form.password}
-                            onChange={handleChange}
-                            type="password"
-                            className='w-full h-10 border-2 border-amber-600 border-w focus:outline-none focus:border-amber-800 rounded-xl  text-m p-2'
-                            required
-                        />{/* required = {true} and false, for dynamic datacontroll */}
-                    </div>
+                        {/* Logo */}
+                        <div className='w-full flex flex-col justify-center items-center mb-6'>
+                            <img
+                                src={logo}
+                                alt="Logo"
+                                className='w-50'
+                            />
+                        </div>
 
-                    {/* button for submit login */}
-                    <button
-                        type='submit'
-                        className='w-full bg-Secondary-800 text-white py-2 px-4 rounded  cursor-pointer'>
-                        Login
-                    </button>
-                </form>
 
+                        <h2 className='text-2xl font-bold mb-6 text-center'>Login</h2>
+
+                        {/*if get any error then error become true and give us the msg */}
+                        {error && <p className='text-red-500 mb-4 text-center'>{error}</p>}
+
+                        {/* For username */}
+                        <div className='mb-4'>
+                            <label
+                                className="block mb-1 font-medium"
+                                htmlFor='username' //it is used to link with input for better cordination, link with id of input
+                            >
+                                Username
+                            </label>
+
+                            <input
+                                name="username"
+                                id='username'
+                                placeholder='emilys'
+                                value={form.username}
+                                onChange={handleChange}
+                                type="text"
+                                className='w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white'
+                                required
+                            />
+
+                        </div>
+
+
+                        {/* For password     */}
+                        <div className='mb-6'>
+                            <label
+                                className="block mb-1 font-medium"
+                                htmlFor='password' //it is used to link with input for better cordination, link with id of input
+                            >
+                                Password
+                            </label>
+
+                            <input
+                                name="password"
+                                id='password'
+                                placeholder='emilyspass'
+                                value={form.password}
+                                onChange={handleChange}
+                                type="password"
+                                className='w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white'
+                                required
+                            />{/* required = {true} and false, for dynamic datacontroll */}
+                        </div>
+
+                        {/* button for submit login */}
+                        <button
+                            type='submit'
+                            className='w-full bg-Secondary-800 text-white py-2 px-4 rounded  cursor-pointer'>
+                            Login
+                        </button>
+                    </form>
+
+
+                </div>
             </div>
 
         </>
