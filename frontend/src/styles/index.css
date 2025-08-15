@@ -10,8 +10,12 @@
     --font-Lora: "Lora", serif;
 
     --color-primary-800: #F82348;
+    --color-primary-600: #6B1423;
+    --color-primary-400: #E62041;
     --color-Secondary-800: #000;
     --color-Secondary-500: #FFFFFF;
+    --color-Secondary-300: #ffbf00;
+ 
     /* --color-Secondary-300: rgb(200, 63, 18); */
     --color-Secondary-100: rgb(255, 174, 0);
 
