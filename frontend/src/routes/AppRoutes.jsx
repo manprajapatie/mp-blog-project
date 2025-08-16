@@ -1,11 +1,12 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from '../features/recipes/pages/Home'
-import RecipeDetails from '../features/recipes/pages/RecipeDetails'
-import Favorites from '../features/recipes/pages/Favorites'
-import Login from '../features/auth/pages/login'
-import ProtectedRoute from '../components/protectedRoute'
-import NotFound from '../features/recipes/pages/NotFound'
+import Home from '../pages/Home'
+import RecipeDetails from '../pages/RecipeDetails'
+import Favorites from '../pages/Favorites'
+import Login from '../pages/Login'
+import ProtectedRoute from '../components/layout/protectedRoute'
+import NotFound from '../pages/NotFound'
+import AllRecipes from '../pages/AllRecipes'
 
 
 const AppRoutes = () => {
@@ -31,6 +32,15 @@ const AppRoutes = () => {
             </ProtectedRoute>
 
           } />
+
+        <Route path='/AllRecipes'
+          element={
+            <ProtectedRoute>
+              <AllRecipes />
+            </ProtectedRoute>
+
+          } />
+
 
         <Route path='/RecipeDetails/:id'
           element={
