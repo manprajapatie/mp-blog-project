@@ -49,7 +49,7 @@ const BannerSlider = () => {
               {img[index].Detail}
             </p>
             <Link
-              to="/Favorites"
+              to="/AllRecipes"
               className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg  px-6 py-3 text-center me-2 m-1 text-[1.1rem]'
             >
               All Recipes
