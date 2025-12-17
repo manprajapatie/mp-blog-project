@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom'
 const BannerSlider = () => {
 
   const img = [
-    { src: img1, Title: "Chowmain", Detail: " lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd  " },
-    { src: img2, Title: "Man", Detail: " lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd  " },
-    { src: img3, Title: "Prajapati", Detail: " lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd  " },
-    { src: img4, Title: "Hai yaha per", Detail: " lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd lorem12asdf asd  " },
+    { src: img1, Title: "Fresh Food Stories", Detail: " Explore flavors from around the world through simple, comforting dishes. Every recipe carries a story, inviting you to cook, taste, and enjoy real food made with love. " },
+    { src: img2, Title: "Cook With Passion", Detail: " Turn everyday ingredients into something special. With easy steps and practical tips, these recipes help you bring warmth and joy into your kitchen every single day.  " },
+    { src: img3, Title: "Healthy, Happy Eating", Detail: "Discover meals that keep you energized and satisfied. From light breakfasts to wholesome dinners, each recipe blends nutrition with great taste for a balanced lifestyle." },
+    { src: img4, Title: "Sweet Treat Moments", Detail: " Indulge in delightful desserts that anyone can make. From quick bakes to classic favorites, enjoy treats that add a little sweetness to your day without the stress.  " },
   ]
   const [index, setIndex] = useState(0)
 
@@ -27,25 +27,29 @@ const BannerSlider = () => {
   return (
 
     <>
-      <section className='flex max-w-full w-full h-[45rem] border-solid border-2 border-Secondary-100 justify-end relative'>
+      <section className='flex max-w-full w-full h-[60rem] lg:h-[45rem] border-solid border-2 border-Secondary-100 justify-end relative overflow-hidden'>
 
         {/* Container For Right Design */}
-        <div className='max-w-[60%] w-full h-[95%] bg-primary-800 rounded-bl-[15rem] flex justify-center items-center'>
+        <div className='max-w-[60%] w-full lg:h-[95%] bg-primary-800 rounded-bl-[15rem] flex justify-center items-center'>
         </div>
 
         {/* Container For Text and Image */}
 
         <div
-          className='flex justify-between max-w-full w-full h-[43rem] border-solid border-2 border-Secondary-100 absolute items-center'
+          className='flex justify-start max-w-full w-full h-full lg:h-[43rem] border-solid border-5 border-fuchsia-900 absolute lg:items-center lg:flex-row flex-col-reverse'
           key={index}
         >
 
           {/* Text Area */}
-          <div className=' border-solid border-2 border-black w-[30%] h-1/2 m-5 p-2 relative TransformTopToBottom'>
-            <h2 className='font-Rouge text-4xl text-primary-800 pb-3'>Namasty</h2>
-            <h1 className='font-Lora text-4xl bold pb-4'> {img[index].Title}
-              <span className='text-primary-800'> Low Price</span></h1>
-            <p className='mb-5 text-[1.1rem]'>
+          <div className='
+          border-solid border-2 border-black
+          w-[70%] md:w-[50%] lg:w-[40%]
+          h-1/3 lg:h-1/2 m-5 p-2 relative TransformTopToBottom'>
+            <h2 className='font-Rouge text-4xl text-primary-800 pb-1 md:pb-3'>Namasty</h2>
+            <h1 className='font-Lora text-3xl md:text-4xl bold pb-2 md:pb-4'> {img[index].Title}
+              {/* <span className='text-primary-800'> Low Price</span> */}
+              </h1>
+            <p className='mb-5 text-[1rem] md:text-[1.1rem]'>
               {img[index].Detail}
             </p>
             <Link
@@ -60,14 +64,12 @@ const BannerSlider = () => {
 
 
 
-          <div className='relative TransformRightToLeft border-solid border-2 border-black h-3/4 flex justify-center items-center grow-10 ' key={index}>
+          <div className='relative TransformRightToLeft  border-solid border-2 w-full lg:w-[70%] border-black h-[50%] lg:h-3/4 flex justify-center items-center' key={index}>
             <img
               src={img[index].src}
-
               alt=""
-              className='h-[70%]  ZoomInOut ' />
+              className='h-[70%]  ZoomInOut' />
           </div>
-
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import logo from '../../../public/MPlogo.png'
+import logo from '/MPlogo.png'
 
 const RandomRecipes = () => {
 
