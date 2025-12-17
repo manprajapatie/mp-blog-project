@@ -7,11 +7,13 @@ import Login from '../pages/Login'
 import ProtectedRoute from '../components/layout/protectedRoute'
 import NotFound from '../pages/NotFound'
 import AllRecipes from '../pages/AllRecipes'
+import ScrollToTop from '../components/layout/ScrollToTop'
 
 
 const AppRoutes = () => {
   return (
     <>
+        <ScrollToTop/>
       <Routes>
         <Route path='/'
           element={
