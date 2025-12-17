@@ -50,11 +50,11 @@ const Login = () => {
         <>
             <div className='min-h-screen bg-gray-100 text-gray-900 flex justify-center items-center'>
 
-                <div className='max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center items-center overflow-hidden'>
+        <div className='max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center items-center overflow-hidden flex-col sm:flex-row'>
 
 
                     {/* Side Background */}
-                    <div className="w-full h-screen overflow-hidden">
+                    <div className="w-screen h-36  sm:h-screen overflow-hidden">
                         <img
                             src={img}
                             alt=""

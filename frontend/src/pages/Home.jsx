@@ -11,10 +11,6 @@ import { fetchApi } from '../features/recipes/recipeSlice'
 
 const Home = () => {
 
-  const dispatch = useDispatch()
-   useEffect(() => {
-    dispatch(fetchApi());
-  }, [dispatch]);
 
   return (
     <>
