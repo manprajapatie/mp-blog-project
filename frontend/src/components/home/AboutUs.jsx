@@ -17,11 +17,16 @@ const AboutUs = () => {
           {/* ---------------Image Area */}
 
           <div
-            className='relative  border-solid border-2 border-black h-full flex justify-center items-center grow-2 ' >
+            className='relative  border-solid border-2 border-black h-full flex justify-center items-center grow-2 lg:w-[65%] w-[90%]' >
             <img
               src={AboutImg}
               alt=""
-              className='lg:h-[80%] ZoomInOutWithoutHover  ' />
+              className='  w-[90%] 
+      sm:w-[80%] 
+      md:w-[75%] 
+      lg:w-[70%]
+      h-auto
+      object-contain ZoomInOutWithoutHover  ' />
           </div>
 
 
