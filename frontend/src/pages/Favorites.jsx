@@ -30,15 +30,15 @@ const Favorites = () => {
                     <p className="text-center text-gray-600 mb-60">You haven't added any favorites yet.</p>
                 ) : (<div className="grid grid-cols-1 gap-2 shadow-2xl  ">
                     {favoriteRecipes.map((recipe) => (
-                        <div key={recipe.id} className="rounded-lg p-5 shadow bg-white flex place-content-around overflow-hidden">
+                        <div key={recipe.id} className="rounded-lg p-5 shadow bg-white flex justify-between overflow-hidden">
 
 
-                            <div className='rounded-full overflow-hidden object-contain h-30 w-30 '>
+                            <div className='rounded-full overflow-hidden object-contain h-25 w-25 md:h-30 md:w-30 '>
                                 <img src={recipe.image} alt={recipe.name} className="w-full h-full object-cover rounded mb-4" />
                             </div>
-                            <div className='place-content-center'>
+                            <div className='place-content-center basis-1/2 m-2'>
 
-                                <h3 className="text-3xl font-semibold mb-2 place-content-center cursor-default">{recipe.name}</h3>
+                                <h3 className="text-[1.2rem] sm:text-[1.6rem] md:text-3xl font-semibold mb-2 place-content-center cursor-default">{recipe.name}</h3>
                                 <p className="text-gray-600 mb-2 cursor-default">{recipe.cuisine} - {recipe.difficulty}</p>
                             </div>
                             <div className="flex justify-between items-center">
