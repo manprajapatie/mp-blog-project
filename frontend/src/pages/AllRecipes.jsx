@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import { useDebounce } from '../utils/useDebounce'
 import Pagination from '../components/layout/Pagination'
+import NotFound from './NotFound'
 import { Star } from 'lucide-react';
 
 const AllRecipes = () => {
@@ -89,9 +90,9 @@ const AllRecipes = () => {
 
 
         {/* recipe Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredRecipes.length > 0 ? (
-            currentRecipes.map((recipe) => (
+        {filteredRecipes.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentRecipes.map((recipe) => (
               <div key={recipe.id} className="border border-gray-200 rounded-xl p-5 shadow-lg bg-white transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <img
                   src={recipe.image}
@@ -122,8 +123,8 @@ const AllRecipes = () => {
                  bg-primary-800 text-white cursor-pointer hover:bg-primary-400 shadow-md`}
                   >
                     {favorites.includes(recipe.id)
-                      ? <div className='flex '> <Star  size={26} className='mr-1 text-Secondary-300'/> Fav </div>
-                      : <div className='flex '> <Star color="white" size={26} className='mr-1'/> Fav </div>
+                      ? <div className='flex '> <Star size={26} className='mr-1 text-Secondary-300' /> Fav </div>
+                      : <div className='flex '> <Star color="white" size={26} className='mr-1' /> Fav </div>
                     }
                   </button>
 
@@ -138,12 +139,13 @@ const AllRecipes = () => {
                 </div>
 
               </div>
-            ))) : (
-            <p className="text-center col-span-full">No recisssssssssssssssssssssspes found.</p>
-          )
-          }
+            ))}</div>
+          ) : (
+          <NotFound />
+        )
+        }
 
-        </div>
+
         {/* Pagination Component */}
         <Pagination
           currentPage={currentPage}

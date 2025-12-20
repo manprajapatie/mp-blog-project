@@ -5,38 +5,56 @@ import { Link } from 'react-router-dom'
 const NotFound = () => {
   return (
     <>
-       <div className='relative justify-center max-w-full w-full h-50 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
-        <h1 className='mt-auto text-4xl font-bold m-6 text-Secondary-500 font-Lora z-10'></h1>
+     <div className="min-h-screen bg-[#F9FAFB] flex flex-col items-center">
+      
+      {/* 1. The Header Banner - Simplified to be a "Backdrop" */}
+      <div className="w-[60%] h-40  bg-[var(--color-primary-800)] flex items-center justify-center rounded-t-[3rem]  shadow-lg">
+        
       </div>
 
-      {/* <div className='min-h-screen flex flex-col justify-center items-center text-center'>
-        <h1 className='text-4xl font-bold mb-2'> 404 Page Not Found</h1>
-        <p className='mb-4 text-gray-600 '>This Page is not Exist</p>
+      {/* 2. The Content Card - Using "Negative Margin" to bridge the gap gracefully */}
+      <div className="w-full max-w-xl px-4 -mt-20 md:-mt-32 z-10">
+        <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 p-8 md:p-12 text-center">
+          
+          {/* 3. The Visual Anchor (The 404) */}
+          <div className="mb-6">
+            <h2 className="text-8xl md:text-[9rem] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[var(--color-primary-800)] via-[var(--color-primary-400)] to-[var(--color-Secondary-300)]">
+              404
+            </h2>
+            <p className="text-[var(--color-primary-800)] font-bold text-xl uppercase tracking-widest mt-2">
+              Page Not Found
+            </p>
+          </div>
 
-        <Link
-        to="/"
-        className='px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition'
-        >
-            Go To Home or Login Page
-        </Link>
-      </div> */}
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
-                <div className="text-center p-8 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
-                  <h1 className="text-9xl font-bold text-Secondary-500 ">404</h1>
-                  <p className="text-2xl font-semibold text-gray-600 dark:text-gray-400 mt-4">
-                    Oops! Product Not Found
-                  </p>
-                  <p className="text-lg text-gray-500 dark:text-gray-500 mt-2">
-                    We can't seem to find the product you're looking for.
-                  </p>
-                  <Link
-                    to="/"
-                    className="mt-8 inline-block px-6 py-3 text-white font-bold bg-primary-400 rounded-md shadow-md hover:bg-primary-600 transition duration-300"
-                  >
-                    Go Back to Home
-                  </Link>
-                </div>
-              </div>
+          {/* 4. Balanced Text - Focused on Readability */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-[var(--color-Secondary-800)]">
+              Whoops! This link is broken.
+            </h3>
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+              The Receipy you're looking for might not available right now.
+            </p>
+          </div>
+
+          {/* 5. Clear Call to Action Buttons */}
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Link
+              to="/"
+              className="px-8 py-4 bg-[var(--color-primary-800)] hover:bg-[var(--color-primary-600)] text-white font-bold rounded-2xl shadow-md transition-all duration-300 hover:scale-[1.02]"
+            >
+              Home Page
+            </Link>
+            
+            <button 
+              onClick={() => window.history.back()}
+              className="px-8 py-4 bg-gray-50 border border-gray-200 text-[var(--color-Secondary-800)] font-bold rounded-2xl hover:bg-gray-100 transition-all"
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   )
 }
