@@ -11,10 +11,39 @@ import ScrollToTop from '../components/layout/ScrollToTop'
 
 
 const AppRoutes = () => {
+
+  const protectedRoute = [
+    { path: "/", element: <Home /> },
+    { path: "/Favorites", element: <Favorites /> },
+    { path: "/AllRecipes", element: <AllRecipes /> },
+    { path: "/RecipeDetails/:id", element: <RecipeDetails /> },
+    { path: "*", element: <NotFound /> },
+  ];
+
   return (
     <>
-        <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
+        <Route path='/Login'
+          element={
+            <Login />
+          } />
+
+        {/* Destructuring data and then using it */}
+        {protectedRoute.map(({path, element}) => (
+
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ProtectedRoute>
+                {element}
+              </ProtectedRoute>
+            } />
+
+        ))}
+
+        {/*           
         <Route path='/'
           element={
             <ProtectedRoute>
@@ -22,10 +51,6 @@ const AppRoutes = () => {
             </ProtectedRoute>
           } />
 
-        <Route path='/Login'
-          element={
-            <Login />
-          } />
 
         <Route path='/Favorites'
           element={
@@ -57,7 +82,7 @@ const AppRoutes = () => {
               <NotFound/>
             </ProtectedRoute>
           }
-          />
+          /> */}
 
       </Routes>
     </>
