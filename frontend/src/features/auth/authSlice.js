@@ -1,11 +1,44 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const userFromStorage = JSON.parse(localStorage.getItem("user"))
+/* -------------------- LOAD FROM STORAGE -------------------- */
+const storedUser = JSON.parse(localStorage.getItem("user"));
+const storedAccessToken = localStorage.getItem("accessToken");
+const storedRefreshToken = localStorage.getItem("refreshToken");
 
+
+/* -------------------- LOGIN API (JWT) -------------------- */
+export const loginUser = createAsyncThunk('auth/loginUser',
+    async ({ username, password }, { rejectWithValue }) => {
+        try {
+            const response = await fetch('https://dummyjson.com/auth/login',
+                {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify
+                        ({
+                            username,
+                            password,
+                           
+                        }),
+                });
+
+            if (!response.ok) { throw new Error("Invalid response") }
+            const data = await response.json()
+            return data
+        }
+        catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+
+/* -------------------- INITIAL STATE -------------------- */
 const initialState = {
-    user: userFromStorage || null,
-    isAuthenticated: !!userFromStorage,
-    //!! it is use to clean code, it give us true or false(if null it automaticly convert it into false)
+    user: storedUser || null,
+    accessToken: storedAccessToken || null,
+    refreshToken: storedRefreshToken || null, // Not using right now
+    isAuthenticated: !!storedAccessToken, 
+    loading: false, // Not using right now
     error: null,
 };
 
@@ -25,12 +58,42 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.error = null;
             localStorage.removeItem("user") //remove user when logout
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
         },
-        setError: (state, action) =>{
+        setError: (state, action) => {
             state.error = action.payload
-        }
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(loginUser.fulfilled, (state, action) => {
+            state.loading = false;
+            const {
+                accessToken,
+                refreshToken,
+                ...userData
+            } = action.payload;
+
+            state.user = userData;
+            state.accessToken = accessToken;
+            state.refreshToken = refreshToken;
+            state.isAuthenticated = true;
+
+            // Store access refresh token
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+            localStorage.setItem("user", JSON.stringify(userData));
+        }),
+            builder.addCase(loginUser.pending, (state, action) => {
+                state.loading = true;
+                state.error = null;
+            }),
+            builder.addCase(loginUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
     }
 })
 
-export const {login, logout, setError} = authSlice.actions
+export const { login, logout, setError } = authSlice.actions
 export default authSlice.reducer;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { users } from '../features/auth/userData'
 import { useDispatch, useSelector } from "react-redux"
-import { login, setError } from '../features/auth/authSlice'
+import { loginUser } from '../features/auth/authSlice'
 import { useNavigate } from "react-router-dom"
 import img from ".././assets/FoodImg/img5.jpeg"
 import logo from ".././assets/logoCol.png"
@@ -9,8 +9,11 @@ import logo from ".././assets/logoCol.png"
 const Login = () => {
 
     const [form, setForm] = useState({ username: "", password: "" })
-    const error = useSelector((state) => state.auth.error) //get error msg from auth reducer
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+    // const error = useSelector((state) => state.auth.error) //get error msg from auth reducer
+    // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+    const {isAuthenticated, loading, error} = useSelector(
+        (state)=> state.auth
+    ) //take data in one function (using destructuring here)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -31,18 +34,18 @@ const Login = () => {
     //Authentication verifing (check if user and password are correct)
     const handleSubmit = (e) => {
         e.preventDefault()
-        const foundUser = users.find((user) => {
-            return user.username === form.username && user.password === form.password
+        // const foundUser = users.find((user) => {
+        //     return user.username === form.username && user.password === form.password
 
-        })
+        // })
 
-        if (foundUser) {
-            dispatch(login(foundUser))
-            navigate("/") //if user and pass true then navigate to home
-        }
-        else {
-            dispatch(setError("Incorrect username or password"))
-        }
+        dispatch(loginUser(form))
+        // if (foundUser) {
+        //     navigate("/") //if user and pass true then navigate to home
+        // }
+        // else {
+        //     dispatch(setError("Incorrect username or password"))
+        // }
     }
 
 
