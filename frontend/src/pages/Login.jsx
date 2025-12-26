@@ -5,6 +5,7 @@ import { loginUser, setError } from '../features/auth/authSlice'
 import { useNavigate } from "react-router-dom"
 import img from ".././assets/FoodImg/img5.jpeg"
 import logo from ".././assets/logoCol.png"
+import Loader from '../components/ui/Loader'
 
 const Login = () => {
 
@@ -128,17 +129,14 @@ const Login = () => {
                         {/* button for submit login */}
                         <button
                             type='submit'
-                            className='w-full bg-Secondary-800 bg- text-white py-2 px-4 rounded  cursor-pointer' disabled>
-                                
-                        Login
-                        <svg className="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24 white">
-                                    ...
-                        </svg>
-                    </button>
-                     
-                </form>
-            </div>
-        </div >
+                            className='w-full bg-Secondary-800 text-white py-2 px-4 rounded  cursor-pointer flex justify-center items-center' disabled={loading}>
+                            {loading && <Loader size={18} />}
+                            {loading ? "Logging in..." : "Login"}
+                        </button>
+
+                    </form>
+                </div>
+            </div >
 
         </>
     )
