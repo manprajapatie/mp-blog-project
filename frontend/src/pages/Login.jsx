@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { users } from '../features/auth/userData'
 import { useDispatch, useSelector } from "react-redux"
-import { loginUser } from '../features/auth/authSlice'
+import { loginUser, setError } from '../features/auth/authSlice'
 import { useNavigate } from "react-router-dom"
 import img from ".././assets/FoodImg/img5.jpeg"
 import logo from ".././assets/logoCol.png"
@@ -9,10 +9,10 @@ import logo from ".././assets/logoCol.png"
 const Login = () => {
 
     const [form, setForm] = useState({ username: "", password: "" })
-    // const error = useSelector((state) => state.auth.error) //get error msg from auth reducer
+    const errorMSG = useSelector((state) => state.auth.error) //get error msg from auth reducer
     // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-    const {isAuthenticated, loading, error} = useSelector(
-        (state)=> state.auth
+    const { isAuthenticated, loading, error } = useSelector(
+        (state) => state.auth
     ) //take data in one function (using destructuring here)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -40,12 +40,10 @@ const Login = () => {
         // })
 
         dispatch(loginUser(form))
-        // if (foundUser) {
-        //     navigate("/") //if user and pass true then navigate to home
-        // }
-        // else {
-        //     dispatch(setError("Incorrect username or password"))
-        // }
+        if (foundUser) {
+            navigate("/") //if user and pass true then navigate to home
+        }
+
     }
 
 
@@ -53,7 +51,7 @@ const Login = () => {
         <>
             <div className='min-h-screen bg-gray-100 text-gray-900 flex justify-center items-center'>
 
-        <div className='max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center items-center overflow-hidden flex-col sm:flex-row'>
+                <div className='max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center items-center overflow-hidden flex-col sm:flex-row'>
 
 
                     {/* Side Background */}
@@ -130,14 +128,17 @@ const Login = () => {
                         {/* button for submit login */}
                         <button
                             type='submit'
-                            className='w-full bg-Secondary-800 text-white py-2 px-4 rounded  cursor-pointer'>
-                            Login
-                        </button>
-                    </form>
-
-
-                </div>
+                            className='w-full bg-Secondary-800 bg- text-white py-2 px-4 rounded  cursor-pointer' disabled>
+                                
+                        Login
+                        <svg className="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24 white">
+                                    ...
+                        </svg>
+                    </button>
+                     
+                </form>
             </div>
+        </div >
 
         </>
     )

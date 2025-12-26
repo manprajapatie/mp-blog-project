@@ -18,12 +18,14 @@ export const loginUser = createAsyncThunk('auth/loginUser',
                         ({
                             username,
                             password,
-                           
                         }),
                 });
-
-            if (!response.ok) { throw new Error("Invalid response") }
             const data = await response.json()
+            if (!response.ok) {
+                //api is giving us some error handling from backend
+                return rejectWithValue(data.message)
+            }
+
             return data
         }
         catch (error) {
@@ -37,7 +39,7 @@ const initialState = {
     user: storedUser || null,
     accessToken: storedAccessToken || null,
     refreshToken: storedRefreshToken || null, // Not using right now
-    isAuthenticated: !!storedAccessToken, 
+    isAuthenticated: !!storedAccessToken,
     loading: false, // Not using right now
     error: null,
 };
