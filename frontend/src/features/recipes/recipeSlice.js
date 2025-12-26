@@ -34,14 +34,16 @@ const recipeSlice = createSlice({
     },
 
     extraReducers: (builder) => {
-        builder.addCase(fetchApi.fulfilled, (state, action) => {
-            state.all = action.payload
-        });
         builder.addCase(fetchApi.pending, (state, action) => {
             state.isLoading = true
         });
+        builder.addCase(fetchApi.fulfilled, (state, action) => {
+            state.all = action.payload
+            state.isLoading = false
+        });
         builder.addCase(fetchApi.rejected, (state, action) => {
             console.log('Error in Api call (in redux)', action.payload);
+            state.isLoading = false
 
         });
     },

@@ -7,11 +7,13 @@ import { useDebounce } from '../utils/useDebounce'
 import Pagination from '../components/layout/Pagination'
 import NotFound from './NotFound'
 import { Star } from 'lucide-react';
+import RecipeSkeleton from '../components/skeletons/recipeSkeletons'
 
 const AllRecipes = () => {
 
   const allRecipes = useSelector((state) => state.recipes.all)
   const favorites = useSelector((state) => state.recipes.favorites)
+  const isLoading = useSelector((state) => state.recipes.isLoading)
   const dispatch = useDispatch()
 
   const [searchTerm, setSearchTerm] = useState('')
@@ -90,59 +92,69 @@ const AllRecipes = () => {
 
 
         {/* recipe Cards */}
-        {filteredRecipes.length > 0 ? (
+        {isLoading ? (
+          // ------------------ LOADING STATE
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentRecipes.map((recipe) => (
-              <div key={recipe.id} className="border border-gray-200 rounded-xl p-5 shadow-lg bg-white transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                <img
-                  src={recipe.image}
-                  alt={recipe.name}
-                  className="w-full h-48 object-cover rounded-lg mb-4 shadow-sm"
-                />
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{recipe.name}</h3>
-                <p className="text-base text-gray-600 mb-3">
-                  <span className="font-medium">Cuisine:</span> {recipe.cuisine} | <span className="font-medium">Difficulty:</span> {recipe.difficulty}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {recipe.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full border border-blue-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+            {/* Array.from create empty array that is filled, _dont care about the value, index loop with given number*/}
+            {Array.from({ length: recipesPerPage }).map((_, index) => (
+              <RecipeSkeleton key={index} />
+            ))}
+          </div>
+        ) :
+          filteredRecipes.length > 0 || isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {currentRecipes.map((recipe) => (
+                <div key={recipe.id} className="border border-gray-200 rounded-xl p-5 shadow-lg bg-white transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                  <img
+                    src={recipe.image}
+                    alt={recipe.name}
+                    className="w-full h-48 object-cover rounded-lg mb-4 shadow-sm"
+                  />
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{recipe.name}</h3>
+                  <p className="text-base text-gray-600 mb-3">
+                    <span className="font-medium">Cuisine:</span> {recipe.cuisine} | <span className="font-medium">Difficulty:</span> {recipe.difficulty}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {recipe.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full border border-blue-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <div className='flex flex-wrap gap-2 mb-5 justify-between'>
+                  <div className='flex flex-wrap gap-2 mb-5 justify-between'>
 
 
-                  <button
-                    onClick={() => toggleFavorite(recipe.id)}
-                    className={`mt-1 w-2sm py-2 px-4 rounded-xl font-medium text-lg transition duration-300 ease-in-out
+                    <button
+                      onClick={() => toggleFavorite(recipe.id)}
+                      className={`mt-1 w-2sm py-2 px-4 rounded-xl font-medium text-lg transition duration-300 ease-in-out
                  bg-primary-800 text-white cursor-pointer hover:bg-primary-400 shadow-md`}
-                  >
-                    {favorites.includes(recipe.id)
-                      ? <div className='flex '> <Star size={26} className='mr-1 text-Secondary-300' /> Fav </div>
-                      : <div className='flex '> <Star color="white" size={26} className='mr-1' /> Fav </div>
-                    }
-                  </button>
+                    >
+                      {favorites.includes(recipe.id)
+                        ? <div className='flex '> <Star size={26} className='mr-1 text-Secondary-300' /> Fav </div>
+                        : <div className='flex '> <Star color="white" size={26} className='mr-1' /> Fav </div>
+                      }
+                    </button>
 
 
-                  {/* //Navigate to detail of recipe */}
-                  <Link
-                    to={`/RecipeDetails/${recipe.id}`}
-                    className="mt-1 w-2sm py-2 px-4 rounded-xl font-medium text-lg transition duration-300 ease-in-out border border-solid text-primary-400 border-primary-400 hover:bg-primary-400 hover:text-Secondary-500"
-                  >
-                    View Recipe
-                  </Link>
+                    {/* //Navigate to detail of recipe */}
+                    <Link
+                      to={`/RecipeDetails/${recipe.id}`}
+                      className="mt-1 w-2sm py-2 px-4 rounded-xl font-medium text-lg transition duration-300 ease-in-out border border-solid text-primary-400 border-primary-400 hover:bg-primary-400 hover:text-Secondary-500"
+                    >
+                      View Recipe
+                    </Link>
+                  </div>
+
                 </div>
-
-              </div>
-            ))}</div>
+              ))}</div>
           ) : (
-          <NotFound />
-        )
+            <NotFound />
+          )
         }
 
 
