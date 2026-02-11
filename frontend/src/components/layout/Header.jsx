@@ -52,8 +52,8 @@ const Header = () => {
             {/* Contact No & Login */}
             < div className='max-w-7xl w-full flex justify-between mx-auto rounded-bl-3xl rounded-br-3xl shadow-md/25 relative'>
 
-              <p className='py-2.5 px-8 text-[1.1rem] font-bold text-primary-800 '>
-                Contact Us +91 1234567890
+              <p className='py-2.5 px-8 text-[0.85rem] sm:text-[1.1rem] font-bold text-primary-800 '>
+                Contact Us +911234567890
               </p>
 
 
@@ -73,17 +73,12 @@ const Header = () => {
 
             {/* If it is true Show nothing, false show header */}
             {!is404 && (
-              < header className="bg-primary-600 md:bg-transparent text-Secondary-500  max-w-full w-full border-solid   border-2 border-Secondary-500  p-4 shadow-md flex justify-between absolute top-[56px] left-0">
+              < header className="bg-primary-600 md:bg-transparent text-Secondary-500  max-w-7xl mx-auto border-solid   border-2 border-Secondary-500  p-4 shadow-md flex justify-between  top-[56px] ">
 
 
 
                 {/* <h1 className="text-2xl font-bold">Recipe Blog</h1> */}
-                {!isCurrentPageHome ?
-                  (
-                    <img src={man2} className='h-12 ml-2 ' alt="Img" />
-
-                  )
-                  :
+                {
                   (
                     <>
                       <img src={man} className='h-12 ml-2 hidden md:block' alt="Img" />
@@ -92,7 +87,7 @@ const Header = () => {
                   )}
 
                 {/*----------------------- For Greater then md */}
-                <nav className={`hidden md:flex space-x-10 px-10 text-xl items-center`}>
+                <nav className={`hidden md:flex space-x-10 px-[10%] text-xl items-center rounded-xl bg-primary-400`}>
                   <Link to="/" className='hover:underline '>Home</Link>
                   <Link to="/Favorites" className='hover:underline '>Favorite</Link>
                   <Link to="/AllRecipes" className='hover:underline '>Recipes</Link>
@@ -129,7 +124,7 @@ const Header = () => {
                       <Link to="/" onClick={() => setOpen(false)}>Home</Link>
                     </li>
                     <li className="py-3 border-b border-b-gray-400">
-                      <Link to="/favorites" onClick={() => setOpen(false)}>Favorites</Link>
+                      <Link to="/Favorites" onClick={() => setOpen(false)}>Favorites</Link>
                     </li>
                     <li className="py-3">
                       <Link to="/AllRecipes" onClick={() => setOpen(false)}>Recipes</Link>

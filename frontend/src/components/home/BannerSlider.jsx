@@ -27,7 +27,7 @@ const BannerSlider = () => {
   return (
 
     <>
-      <section className='flex max-w-full w-full h-[60rem] lg:h-[45rem] border-solid border-2 border-Secondary-100 justify-end relative overflow-hidden'>
+      <section className='flex max-w-full w-full h-[60rem] lg:h-[45rem]  justify-end relative overflow-hidden'>
 
         {/* Container For Right Design */}
         <div className='max-w-[60%] w-full lg:h-[95%] bg-primary-800 rounded-bl-[15rem] flex justify-center items-center'>
@@ -36,19 +36,18 @@ const BannerSlider = () => {
         {/* Container For Text and Image */}
 
         <div
-          className='flex justify-start max-w-full w-full h-full lg:h-[43rem] border-solid border-5 border-fuchsia-900 absolute lg:items-center lg:flex-row flex-col-reverse'
+          className='flex justify-start max-w-full w-full h-full lg:h-[43rem]  absolute lg:items-center lg:flex-row flex-col-reverse'
           key={index}
         >
 
           {/* Text Area */}
           <div className='
-          border-solid border-2 border-black
           w-[70%] md:w-[50%] lg:w-[40%]
           h-1/3 lg:h-1/2 m-5 p-2 relative TransformTopToBottom'>
             <h2 className='font-Rouge text-4xl text-primary-800 pb-1 md:pb-3'>Namasty</h2>
             <h1 className='font-Lora text-3xl md:text-4xl bold pb-2 md:pb-4'> {img[index].Title}
               {/* <span className='text-primary-800'> Low Price</span> */}
-              </h1>
+            </h1>
             <p className='mb-5 text-[1rem] md:text-[1.1rem]'>
               {img[index].Detail}
             </p>
@@ -64,7 +63,7 @@ const BannerSlider = () => {
 
 
 
-          <div className='relative TransformRightToLeft  border-solid border-2 w-full lg:w-[70%] border-black h-[50%] lg:h-3/4 flex justify-center items-center' key={index}>
+          <div className='relative TransformRightToLeft w-full lg:w-[70%] h-[50%] lg:h-3/4 flex justify-center items-center' key={index}>
             <img
               src={img[index].src}
               alt=""

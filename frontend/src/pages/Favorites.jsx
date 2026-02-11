@@ -19,8 +19,8 @@ const Favorites = () => {
 
     return (
         <>
-            <div className='relative justify-center max-w-full w-full h-50 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
-                <h1 className='mt-auto text-4xl font-bold m-6 text-Secondary-500 font-Lora'>My Favorite Recipes</h1>
+            <div className='relative justify-center max-w-full w-full h-25 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
+                <h1 className='mt-auto text-2xl sm:text-3xl md:text-4xl font-bold m-6 text-Secondary-500 font-Lora'>My Favorite Recipes</h1>
             </div>
 
             <div className='max-w-4xl mx-auto px-4 py-8'>

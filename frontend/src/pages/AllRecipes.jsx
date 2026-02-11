@@ -65,8 +65,8 @@ const AllRecipes = () => {
 
   return (
     <>
-      <div className='relative justify-center max-w-full w-full h-50 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
-        <h1 className='mt-auto text-4xl font-bold m-6 text-Secondary-500 font-Lora'>Our All Recipes</h1>
+      <div className='relative justify-center max-w-full w-full h-25 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
+        <h1 className='mt-auto text-3xl md:text-4xl font-bold m-6 text-Secondary-500 font-Lora'>Our All Recipes</h1>
       </div>
 
 
@@ -74,7 +74,7 @@ const AllRecipes = () => {
 
         {/* Search input for Home page */}
 
-        <div className="relative max-w-2xl mx-auto mb-12">
+        <div className="relative max-w-2xl mx-auto mb-5 md:mb-12">
           {/* Search Icon */}
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
@@ -85,7 +85,7 @@ const AllRecipes = () => {
             placeholder="Search by name, tags or meal type"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="block w-full pl-12 pr-12 py-4 bg-white border border-gray-300 rounded-2xl 
+            className="block w-full pl-12 pr-12 py-3 md:py-4 bg-white border border-gray-300 rounded-2xl 
                     text-gray-900 placeholder-gray-400
                     shadow-sm transition-all duration-300
                     hover:shadow-md
@@ -116,10 +116,12 @@ const AllRecipes = () => {
           </div>
         ) :
           filteredRecipes.length > 0 || isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 p-4">
               {currentRecipes.map((recipe) => (
                 <div key={recipe.id}
                   className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2">
+
+                  {/* ---------image  Section*/}
                   <div className="relative overflow-hidden aspect-[4/3]">
                     {/* add link to image also */}
                     <Link
@@ -128,7 +130,7 @@ const AllRecipes = () => {
                       <img
                         src={recipe.image}
                         alt={recipe.name}
-                        className="w-full h-48 object-cover rounded-lg mb-4 shadow-sm"
+                        className="w-full h-48 xs:h-90 sm:h-48 object-cover rounded-lg mb-4 shadow-sm"
                       /></Link>
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-700 uppercase tracking-wider shadow-sm">
                       {recipe.difficulty}
@@ -147,7 +149,7 @@ const AllRecipes = () => {
                       {recipe.tags.slice(0, 3).map((tag, index) => (
                         <span
                           key={index}
-                          className="text-[10px] uppercase tracking-widest font-bold px-2 py-1 bg-gray-50 text-gray-400 border border-gray-200 rounded-md"
+                          className="md:text-[8px] text-[10px] uppercase tracking-widest font-bold px-2 py-1 bg-gray-50 text-gray-400 border border-gray-200 rounded-md"
                         >
                           #{tag}
                         </span>
@@ -175,7 +177,7 @@ const AllRecipes = () => {
                       {/* //Navigate to detail of recipe */}
                       <Link
                         to={`/RecipeDetails/${recipe.id}`}
-                        className="flex-1 text-center py-2.5 px-4 rounded-xl font-semibold text-sm bg-primary-800 text-white hover:bg-primary-900 transition-all duration-300 shadow-sm active:scale-95">
+                        className="flex-1 text-center py-2.5 px-4 rounded-xl font-semibold md:text-[0.8rem] lg:text-sm bg-primary-800 text-white hover:bg-primary-900 transition-all duration-300 shadow-sm active:scale-95">
                         View Recipe
                       </Link>
                     </div>

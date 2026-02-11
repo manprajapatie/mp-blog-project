@@ -19,6 +19,9 @@
     /* --color-Secondary-300: rgb(200, 63, 18); */
     --color-Secondary-100: rgb(255, 174, 0);
 
+    /*This is for custom responsiveness range*/
+    --breakpoint-xs: 22.5rem;
+
 }
 
 
