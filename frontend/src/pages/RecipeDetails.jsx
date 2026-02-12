@@ -58,7 +58,7 @@ const RecipeDetails = () => {
 
   return (
     <>
-      <div className='relative justify-center max-w-full w-full h-50 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
+      <div className='relative justify-center max-w-full w-full h-25 flex bg-primary-800 rounded-bl-4xl rounded-br-4xl'>
         <h1 className='mt-auto text-4xl font-bold m-6 text-Secondary-500 font-Lora z-10'>Recipes Detail</h1>
       </div>
       <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
