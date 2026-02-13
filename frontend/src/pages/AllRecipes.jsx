@@ -7,7 +7,7 @@ import { useDebounce } from '../utils/useDebounce'
 import Pagination from '../components/layout/Pagination'
 import NotFound from './NotFound'
 import { Star, Search, X } from 'lucide-react';
-import RecipeSkeleton from '../components/skeletons/recipeSkeletons'
+import RecipeSkeleton from '../components/skeletons/RecipeSkeletons'
 
 const AllRecipes = () => {
 
