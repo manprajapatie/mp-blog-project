@@ -73,7 +73,7 @@ const Header = () => {
 
             {/* If it is true Show nothing, false show header */}
             {!is404 && (
-              < header className="bg-primary-600 md:bg-transparent text-Secondary-500  max-w-7xl mx-auto border-solid   border-2 border-Secondary-500  p-4 shadow-md flex justify-between  top-[56px] ">
+              < header className="bg-primary-600 md:bg-transparent text-Secondary-500  max-w-7xl mx-auto  p-4 shadow-md flex justify-between  top-[56px] ">
 
 
 

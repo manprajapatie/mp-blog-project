@@ -70,7 +70,7 @@ const RandomRecipes = () => {
 
                 {/* Experice Div */}
                 <div
-                    className='w-[95%] border border-solid border-black rounded-2xl h-auto m-5 p-5 
+                    className='w-[95%]  rounded-2xl h-auto m-5 p-5 
                     bg-primary-800 flex justify-center flex-col md:flex-row text-Secondary-500 items-center
                 '>
                     {/* Logo */}

@@ -40,7 +40,7 @@ const AboutUs = () => {
 
 
             {/* ---------------Text Area */}
-            <div className=' border-solid border-2 border-black lg:w-[30%] h-1/2 m-5 p-2 relative grow-1 TransformTopToDown '>
+            <div className=' lg:w-[30%] h-1/2 m-5 p-2 relative grow-1 TransformTopToDown '>
               <h2 className='font-Rouge text-4xl text-primary-800 pb-3'>About Us</h2>
               <h1 className='font-Lora text-4xl bold pb-4'>
                 <span className='text-Secondary-800text-primary-800'> From Where Our Food <br /> <span className='text-primary-800'>recipes come</span> </span></h1>
